@@ -38,7 +38,7 @@ public class Order {
 
     // b : 총 주문 금액은 각 상품의 구매 가격 합을 모두 더한 금액이다
     private void calculateTotalAmounts() {
-        int sum = orderLines.stream().mapToInt(orderLine -> orderLine.getAmounts()).sum();
+        int sum = orderLines.stream().mapToInt(orderLine -> orderLine.getAmounts().getValue()).sum();
         this.totalAmounts = new Money(sum);
     }
 
