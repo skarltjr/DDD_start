@@ -1,4 +1,7 @@
-package com.example.ddd.order.domain;
+package com.example.ddd.order.domain.vo;
+
+import com.example.ddd.order.domain.vo.Address;
+import com.example.ddd.order.domain.vo.Receiver;
 
 public class ShippingInfo {
     private Address address;

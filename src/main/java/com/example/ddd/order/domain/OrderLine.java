@@ -1,5 +1,7 @@
 package com.example.ddd.order.domain;
 
+import com.example.ddd.order.domain.vo.Money;
+
 public class OrderLine {
     private Product product;
     private Money price;

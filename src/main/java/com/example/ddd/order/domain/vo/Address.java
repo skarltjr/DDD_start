@@ -1,4 +1,4 @@
-package com.example.ddd.order.domain;
+package com.example.ddd.order.domain.vo;
 
 import javax.persistence.Column;
 

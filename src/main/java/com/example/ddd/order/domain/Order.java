@@ -1,5 +1,8 @@
 package com.example.ddd.order.domain;
 
+import com.example.ddd.order.domain.vo.Money;
+import com.example.ddd.order.domain.vo.ShippingInfo;
+
 import java.util.List;
 
 public class Order {
