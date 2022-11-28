@@ -13,14 +13,19 @@ public class OrderLine {
         this.amounts = calculateAmounts();
     }
 
+    public int getAmounts() {
+        return this.amounts;
+    }
+
     private int calculateAmounts() {
         return price * quantity;
     }
+
 
 }
 
 /**
  * 비즈니스 요구 사항
  * 한 상품을 한 개 이상 주문할 수 있다.
- * 총 주문 금액은 각 상품의 구매 가격 합을 모두 더한 금액이다
+ * 각 상품의 구매 가격 합은 상품 가격에 구매 개수를 곱한 값이다
  * */
