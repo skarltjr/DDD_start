@@ -4,26 +4,24 @@ import com.example.ddd.order.domain.vo.Money;
 
 public class OrderLine {
     private Product product;
-    private Money price;
     private int quantity;
+    private Money price;
     private Money amounts;
 
-    public OrderLine(Product product, int price, int quantity, int amounts) {
+    public OrderLine(Product product, int quantity, Money price) {
         this.product = product;
-        this.price = new Money(price);
         this.quantity = quantity;
+        this.price = price;
         this.amounts = calculateAmounts();
+    }
+
+    private Money calculateAmounts() {
+        return this.price.multiply(quantity);
     }
 
     public Money getAmounts() {
         return this.amounts;
     }
-
-    private Money calculateAmounts() {
-        return price.multiply(quantity);
-    }
-
-
 }
 
 /**
