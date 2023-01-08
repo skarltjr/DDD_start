@@ -13,6 +13,7 @@ public class Order {
 
 
     // setter는 지양한다. 생성자로 불변 도모
+    // 여기서 사용하는 set이란 변경을 만드는 수정의 의미가 아닌 지정의 의미
     // b : 주문할 때 배송지 정보를 반드시 지정해야한다. 생성자에 배송지 정보 필요
     public Order(List<OrderLine> orderLines,ShippingInfo shippingInfo) {
         setOrderLines(orderLines);
