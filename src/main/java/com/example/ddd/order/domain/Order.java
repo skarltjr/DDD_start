@@ -7,55 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private List<OrderLine> orderLines = new ArrayList<>();
-    private ShippingInfo shippingInfo;
-    private OrderState orderState;
-    private Money totalAmounts;
 
-    public Order(List<OrderLine> orderLines, ShippingInfo shippingInfo) {
-        setOrderLine(orderLines);
-        setShippingInfo(shippingInfo);
-    }
-
-    private void setShippingInfo(ShippingInfo shippingInfo) {
-        if (shippingInfo == null) {
-            throw new IllegalArgumentException("배송지를 입력해주세요.");
-        }
-        this.shippingInfo = shippingInfo;
-    }
-
-    private void setOrderLine(List<OrderLine> orderLines) {
-        verifyAtLeastOneOrMoreOrderLines(orderLines);
-        this.orderLines = orderLines;
-        calculateTotalAmounts();
-    }
-
-    private void calculateTotalAmounts() {
-        int sum = orderLines.stream().mapToInt(orderLine -> orderLine.getAmounts().getValue()).sum();
-        this.totalAmounts = new Money(sum);
-    }
-
-    private void verifyAtLeastOneOrMoreOrderLines(List<OrderLine> orderLines) {
-        if (orderLines == null || orderLines.isEmpty()) {
-            throw new IllegalArgumentException("최소 한 종류 이상의 제품을 주문해야한다.");
-        }
-    }
-
-    private void cancel() {
-        verifyNotYetShipped();
-        this.orderState = OrderState.CANCELED;
-    }
-
-    private void verifyNotYetShipped() {
-        if (this.orderState != OrderState.PAYMENT_WAITING && this.orderState != OrderState.PREPARING) {
-            throw new IllegalArgumentException("이미 출고된 상품입니다.");
-        }
-    }
-
-    private void changeShippingInfo(ShippingInfo shippingInfo) {
-        verifyNotYetShipped();
-        setShippingInfo(shippingInfo);
-    }
 }
 
 /**
