@@ -1,7 +1,6 @@
-package com.example.ddd.catalog.domain;
+package com.example.ddd.member.domain;
 
-import com.example.ddd.catalog.ErrorCodes;
-import lombok.AllArgsConstructor;
+import com.example.ddd.member.ErrorCodes;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;

@@ -1,4 +1,4 @@
-package com.example.ddd.catalog;
+package com.example.ddd.member;
 
 public class ErrorCodes {
     public static final String PASSWORD_NOT_MATCH = "비밀번호가 틀렸습니다.";

@@ -1,4 +1,4 @@
-package com.example.ddd.catalog.domain;
+package com.example.ddd.member.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
