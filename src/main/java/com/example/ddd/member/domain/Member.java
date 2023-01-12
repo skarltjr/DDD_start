@@ -21,6 +21,9 @@ public class Member {
     @Column(name = "member_email",nullable = false)
     private String email;
 
+    @Embedded
+    private Grade grade;
+
     public Member(String name,Password password,String email){
         this.name = name;
         setPassword(password);
