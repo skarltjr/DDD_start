@@ -32,4 +32,16 @@ public class OrderLine {
     public Money getAmounts(){
         return this.amounts;
     }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public Money getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
 }

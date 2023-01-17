@@ -63,4 +63,8 @@ public class Member {
     private void setEmail(String newEmail) {
         this.email = newEmail;
     }
+
+    public String getName() {
+        return name;
+    }
 }
