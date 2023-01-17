@@ -1,12 +1,10 @@
 package com.example.ddd.order.infrastructure;
 
 import com.example.ddd.member.domain.Grade;
-import com.example.ddd.order.domain.OrderLine;
 import com.example.ddd.order.domain.domainService.DiscountCalculationService;
 import com.example.ddd.order.domain.vo.Money;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 @Component
 public class MemberGradeDiscountService implements DiscountCalculationService {
     @Override
