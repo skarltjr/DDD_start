@@ -18,4 +18,7 @@ public class Category {
     public Category(String name){
         this.name = name;
     }
+    public Long getId(){
+        return this.id;
+    }
 }
