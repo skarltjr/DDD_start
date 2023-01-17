@@ -1,6 +1,8 @@
 package com.example.ddd.order.domain;
 
+import com.example.ddd.member.domain.Grade;
 import com.example.ddd.order.ErrorCodes;
+import com.example.ddd.order.domain.domainService.DiscountCalculationService;
 import com.example.ddd.order.domain.vo.Money;
 import com.example.ddd.order.domain.vo.ShippingInfo;
 
@@ -31,8 +33,12 @@ public class Order {
     private ShippingInfo shippingInfo;
 
     // 총 금액
-    @Column(name = "total_amounts")
+    @Column(name = "order_total_amounts")
     private Money totalAmounts;
+
+    // 주문 지불 금액
+    @Column(name = "order_payment_amounts")
+    private Money paymentAmounts;
 
     // orderState
     @Column(name = "order_state")
@@ -63,6 +69,20 @@ public class Order {
         int sum = orderLines.stream().mapToInt(orderLine
                 -> orderLine.getAmounts().getValue()).sum();
         this.totalAmounts = new Money(sum);
+        this.paymentAmounts = new Money(sum);
+    }
+    public void calculateAmounts(DiscountCalculationService disCalSvc, Grade grade){
+        /*
+         * 문제 :
+         * 할인 계산은 여러 애그리거트에 걸친다
+         * 따라서 도메인 서비스를 활용해야한다
+         * 애그리거트 객체인 order에 도메인 서비스인 discountCalcService 를 전달하는건 응용서비스인 orderservice 책임
+         * discount service를 주입받아야한다
+         *
+         * */
+        Money currentTotalAmount = this.totalAmounts;
+        Money discountAmounts = disCalSvc.calculateDiscountAmounts(grade);
+        this.paymentAmounts = currentTotalAmount.minus(discountAmounts);
     }
 
     private void verifyAtLeastOneOrMoreOrderLines(List<OrderLine> orderLines) {

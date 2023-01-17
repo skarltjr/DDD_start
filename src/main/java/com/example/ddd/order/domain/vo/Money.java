@@ -14,4 +14,8 @@ public class Money {
     public int getValue() {
         return this.value;
     }
+
+    public Money minus(Money discountAmounts) {
+        return new Money(this.value - discountAmounts.getValue());
+    }
 }

@@ -21,13 +21,14 @@ public class Member {
     @Column(name = "member_email",nullable = false)
     private String email;
 
-    @Embedded
+    @Enumerated(EnumType.STRING)
     private Grade grade;
 
-    public Member(String name,Password password,String email){
+    public Member(String name,Password password,String email,Grade grade){
         this.name = name;
         setPassword(password);
         setEmail(email);
+        this.grade = grade;
     }
 
     /**
