@@ -1,10 +1,12 @@
 package com.example.ddd.order.domain;
 
+import com.example.ddd.common.jpa.MoneyConverter;
 import com.example.ddd.member.domain.Grade;
 import com.example.ddd.order.ErrorCodes;
 import com.example.ddd.order.domain.domainService.DiscountCalculationService;
 import com.example.ddd.order.domain.vo.Money;
 import com.example.ddd.order.domain.vo.ShippingInfo;
+import lombok.Getter;
 
 
 import javax.persistence.*;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Getter
 @Table(name = "orders")
 public class Order {
     @Id
@@ -34,10 +37,12 @@ public class Order {
 
     // 총 금액
     @Column(name = "order_total_amounts")
+    @Convert(converter = MoneyConverter.class)
     private Money totalAmounts;
 
     // 주문 지불 금액
     @Column(name = "order_payment_amounts")
+    @Convert(converter = MoneyConverter.class)
     private Money paymentAmounts;
 
     // orderState

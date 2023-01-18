@@ -1,9 +1,13 @@
 package com.example.ddd.order.domain;
 
+import com.example.ddd.member.domain.Grade;
+import lombok.Getter;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
+@Getter
 @Embeddable
 public class Orderer {
 
@@ -11,12 +15,16 @@ public class Orderer {
     @Column(name = "orderer_name")
     private String name;
 
+    @Column(name = "orderer_grade")
+    private Grade grade;
+
     protected Orderer(){
     }
 
-    public Orderer(Long memberId,String name){
+    public Orderer(Long memberId,String name,Grade grade){
         this.ordererId = memberId;
         this.name = name;
+        this.grade = grade;
     }
 
     @Override

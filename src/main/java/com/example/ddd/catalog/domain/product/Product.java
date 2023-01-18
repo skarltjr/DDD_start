@@ -1,6 +1,7 @@
 package com.example.ddd.catalog.domain.product;
 
 import com.example.ddd.catalog.ErrorCodes;
+import com.example.ddd.common.jpa.MoneyConverter;
 import com.example.ddd.order.domain.vo.Money;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class Product {
     private String name;
 
     @Column(name = "product_price")
+    @Convert(converter = MoneyConverter.class)
     private Money price;
 
     @Column(name = "product_detail")
@@ -63,6 +65,10 @@ public class Product {
             throw new IllegalArgumentException(ErrorCodes.NOT_VALID_PRODUCT_CATEGORIES);
         }
         this.categories = categories;
+    }
+
+    public Money getPrice() {
+        return price;
     }
 
     // 카테고리에 인덱스걸고 카테고리별 검색성능 증진시켜보기

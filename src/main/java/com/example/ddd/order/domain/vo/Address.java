@@ -1,7 +1,16 @@
 package com.example.ddd.order.domain.vo;
 
-import javax.persistence.Column;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Getter
+@Embeddable
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
     private String zipCode;
 

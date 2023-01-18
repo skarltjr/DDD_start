@@ -1,12 +1,14 @@
 package com.example.ddd.member.domain;
 
 import com.example.ddd.member.ErrorCodes;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
+@Getter
 @Table(name = "member")
 @NoArgsConstructor
 public class Member {
@@ -64,7 +66,4 @@ public class Member {
         this.email = newEmail;
     }
 
-    public String getName() {
-        return name;
-    }
 }
