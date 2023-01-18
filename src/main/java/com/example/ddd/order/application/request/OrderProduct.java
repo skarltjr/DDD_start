@@ -1,0 +1,13 @@
+package com.example.ddd.order.application.request;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+public class OrderProduct {
+    private Long productId;
+    private int quantity;
+}
