@@ -31,4 +31,9 @@ public class ProductService {
             throw new IllegalArgumentException(ErrorCodes.NOT_VALID_PRODUCT_CATEGORIES);
         }
     }
+
+    public Product getProduct(Long productId) {
+        return productRepository.findById(productId).orElseThrow(() -> new IllegalArgumentException(ErrorCodes.PRODUCT_NOT_FOUND));
+    }
+
 }
